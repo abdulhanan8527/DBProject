@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Cart</title>
+    </head>
+    <body>
+        <div>
+            <ul>
+                <% var total_price = 0 %>
+                <% for (var i = 1; i < product.length; i++) { %>
+                    <%= total_price += product[i].price*product[i].quantity %>
+                    <li class="timeline-yellow">
+                        <div class="timeline-time">
+                            <span class="pname" style="text-align:left">
+                            Name: <%= product[i].pid %>
+                            </span> <br>
+                            <span>
+                                Price: <%= product[i].price %>
+                            </span> <br>
+                            <span class="price">
+                                Quantity: <%= product[i].quantity %> </span>
+                        </div>
+                    </li>
+                    <% } %>
+            </ul>
+            <h5>Total Price: <%=total_price %></h5>
+        </div>
+        <div>
+            <h5><a href="/order/user">Place Order</a></h5>
+        </div>
+    </body>
+</html>

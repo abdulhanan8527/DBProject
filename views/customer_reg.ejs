@@ -1,0 +1,41 @@
+<head>
+    <title>Registration For Customers</title>
+    <link rel="stylesheet" type="text/css" href="/css/customer_reg.css">
+</head>
+<body>
+    <h1>Registration For Customers</h1>
+    <div class="content">
+        <form action="/customer/registration" method="POST">
+            <div class="input">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+            </div>
+            <div class="input">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="input">
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" id="firstname">
+            </div>
+            <div class="input">
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname" id="lastname">
+            </div>
+            <div class="input">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="input">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" id="phone">
+            </div>
+            <div class="input">
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address">
+            </div>
+            <button type="submit">Sign Up</button>
+            <p><a href="/customer"> Customer Menu</a></p>
+        </form>
+    </div>
+</body>

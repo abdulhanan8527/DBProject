@@ -1,0 +1,155 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <div class="medicalStores">
+        <h3>Registered Medical Stores</h3>
+        <ul>
+            <% for(var i=0;i< medicalstore.length ; i++){ %>
+                <li>
+                    <div class="medical_store">
+                        <span>
+                            Name: <%= medicalstore[i].name %>
+                        </span> <br>
+                        <span>
+                            Email: <%= medicalstore[i].email %>
+                        </span> <br>
+                        <span>
+                            Username: <%= medicalstore[i].username %>
+                        </span> <br>
+                        <span>
+                            Phone: <%= medicalstore[i].phone %>
+                        </span> <br>
+                        <span>
+                            Address: <%= medicalstore[i].address %>
+                        </span> <br>
+                        <span>
+                            Registeration Date: <%= medicalstore[i].reg_date %>
+                        </span> <br>
+                    </div>
+                </li>
+                <% } %>
+        </ul>
+        
+    </div>
+    <div class="customers">
+        <h3>Registered Customers</h3>
+        <ul>
+            <% for(var i=0;i< customer.length ; i++){ %>
+                <li>
+                    <div class="medical_store">
+                        <span>
+                            First Name: <%= customer[i].firstname %>
+                        </span> <br>
+                        <span>
+                            Last Name: <%= customer[i].lastname %>
+                        </span> <br>
+                        <span>
+                            Email: <%= customer[i].email %>
+                        </span> <br>
+                        <span>
+                            Username: <%= customer[i].username %>
+                        </span> <br>
+                        <span>
+                            Phone: <%= customer[i].phone %>
+                        </span> <br>
+                        <span>
+                            Address: <%= customer[i].address %>
+                        </span> <br>
+                        <span>
+                            Registeration Date: <%= customer[i].reg_date %>
+                        </span> <br>
+                    </div>
+                </li>
+                <% } %>
+        </ul>
+
+    </div>
+    <div class="deliverBoy">
+        <h3>Registered Delivery Boys</h3>
+        <ul>
+            <% for(var i=0;i< deliveryboy.length ; i++){ %>
+                <li>
+                    <div class="medical_store">
+                        <span>
+                            First Name: <%= deliveryboy[i].firstname %>
+                        </span> <br>
+                        <span>
+                            Last Name: <%= deliveryboy[i].lastname %>
+                        </span> <br>
+                        <span>
+                            Email: <%= deliveryboy[i].email %>
+                        </span> <br>
+                        <span>
+                            Username: <%= deliveryboy[i].username %>
+                        </span> <br>
+                        <span>
+                            Phone: <%= deliveryboy[i].phone %>
+                        </span> <br>
+                        <span>
+                            Address: <%= deliveryboy[i].address %>
+                        </span> <br>
+                        <span>
+                            Registeration Date: <%= deliveryboy[i].reg_date %>
+                        </span> <br>
+                    </div>
+                </li>
+                <% } %>
+        </ul>
+    </div>
+    <div class="order">
+        <h3>ALL ORDERS</h3>
+        <ul>
+            <% for (var i = 0; i < order.length; i++) { %>
+                <li class="timeline-yellow">
+                    <div class="timeline-time">
+                        <span>
+                            OrderID: <%= order[i].oid %>
+                        </span> <br>
+                        <span class="cname">
+                            Customer: <%= order[i].username %>
+                        </span> <br>
+                        <div class="products">
+                            <ul>
+                                <% for (var j = 1 ; j < order[i].product.length; j++) { %>
+                                        <li>
+                                            <div>
+                                                <span>
+                                                    ProductID: <%=order[i].product[j].pid %>
+                                                </span> <br>
+                                                <span>
+                                                    Quantity: <%=order[i].product[j].quantity %>
+                                                </span> <br>
+                                            </div>
+                                        </li>
+                                <% } %>
+                            </ul>
+                        </div>
+                        <span class="status">
+                            Status: <%= order[i].status %>
+                        </span> <br>
+                        <span class="address">
+                            Address: <%= order[i].address %>
+                        </span> <br>
+                        <span class="zipcode">
+                            Zipcode: <%= order[i].zipcode %>
+                        </span> <br>
+                        <span class="contact">
+                            Contact: <%= order[i].contact %>
+                        </span> <br>
+                        <span class="order">
+                            Order Date: <%= Date(order[i].date) %>
+                        </span> <br>
+                        <button>Pick  Up</button>
+                    </div>
+                </li>
+                <% } %>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
