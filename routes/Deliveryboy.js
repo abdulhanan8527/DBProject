@@ -17,7 +17,7 @@ router.get('/home', async function(req, res, next){
     });
     console.log(response.data.data)
     var orders = response.data.data
-    res.render('deliveryboy_home.ejs',{orders})
+    res.render('deliveryboy_home.ejs',{username: req.session.user.username,orders})
 })
 router.get('/login', function(req, res, next){
     res.render('deliveryboy_login.ejs')

@@ -29,6 +29,7 @@ router.post('/store', OrderController.store, async(req, res)=>{
     console.log(Cart)
 })
 router.post('/update',OrderController.update)
+router.post('/updatedeliveryboy',OrderController.updateDeliveryboy)
 router.post('/delete',OrderController.destory)
 
 module.exports = router

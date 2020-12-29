@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const axios = require('axios')
+const Order = require('../schema/order')
 
 const {index} = require('../controllers/product')
 const AuthCustomer = require('../controllers/AuthCustomer')
@@ -18,7 +19,9 @@ router.get('/home', async (req, res, next) =>{
     var username = req.session.user.username
     var CartID = username;
     console.log("Username:",username)
-    res.render('customer_home.ejs',{products,CartID})
+    let data = await Order.find({username,username})
+    console.log("Order: ",data)
+    res.render('customer_home.ejs',{products,CartID,orders: data})
 })
 //call utha whatsapp pa
 

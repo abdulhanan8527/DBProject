@@ -88,7 +88,7 @@ const update = (req, res) => {
 //delete an Product
 const destory = (req, res) => {
     let ProductID = req.body.pid
-    Product.findByIdAndRemove(ProductID)
+    Product.findOneAndRemove({pid: ProductID})
     .then(() => {
         res.json({
             message: 'Product Deleted Successfully'
@@ -101,6 +101,26 @@ const destory = (req, res) => {
     })
 }
 //exporting functions
+const updateAll = (req, res) => {
+    let ProductID = req.body.pid
+    let updatedData = {
+        pname: req.body.pname,
+        price: req.body.price,
+        quantity: req.body.quantity
+    }
+    console.log(ProductID,updatedData)
+    Product.findOneAndUpdate({pid: ProductID}, {$set: updatedData})
+    .then(() => {
+        res.json({
+            message: "Product Updated Successfully"
+        })
+    })
+    .catch(error => {
+        res.json({
+            message: 'An Error Occured'
+        })
+    })
+}
 module.exports = {
-    index, show, store, update, destory, getProducts
+    index, show, store, update, destory, getProducts, updateAll
 }

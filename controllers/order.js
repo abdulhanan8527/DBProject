@@ -98,7 +98,7 @@ const update = (req, res) => {
         status: req.body.status
     }
 
-    Order.findByIdAndUpdate(OrderID, {$set: updatedData})
+    Order.findOneAndUpdate({oid: OrderID}, {$set: updatedData})
     .then(() => {
         res.json({
             message: 'Order Updated Successfully'
@@ -106,7 +106,27 @@ const update = (req, res) => {
     })
     .catch(error => {
         res.json({
-            message: 'An Error Occured'
+            message: error
+        })
+    })
+}
+const updateDeliveryboy = (req, res) => {
+    let OrderID = req.body.oid
+
+    let updatedData = {
+        status: req.body.status,
+        deliveryboy: req.body.deliveryboy
+    }
+
+    Order.findOneAndUpdate({oid: OrderID}, {$set: updatedData})
+    .then(() => {
+        res.json({
+            message: 'Order Updated Successfully'
+        })
+    })
+    .catch(error => {
+        res.json({
+            message: error
         })
     })
 }
@@ -127,5 +147,5 @@ const destory = (req, res) => {
 }
 //exporting functions
 module.exports = {
-    index, show, store, update, destory, getOrders
+    index, show, store, update, destory, getOrders, updateDeliveryboy
 }

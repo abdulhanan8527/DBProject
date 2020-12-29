@@ -11,12 +11,15 @@
                     <% for (var i = 0; i < products.length; i++) { %>
                         <li class="timeline-yellow">
                             <div class="timeline-time">
+                                <span>
+                                    ID: <%= products[i].pid %>
+                                </span> <br>
                                 <span class="pname" style="text-align:left">
-                                Name: <%= products[i].pname %>
+                                    Name: <%= products[i].pname %>
                                 </span>
                                 <br>
                                 <span class="price">
-                                Price: <%= products[i].price %> </span>
+                                    Price: <%= products[i].price %> </span>
                                 <br>
                                 <span class="price">
                                     Quantity: <%= products[i].quantity %> </span>
@@ -36,6 +39,9 @@
                                 </span> <br>
                                 <span class="cname">
                                     Customer: <%= orders[i].username %>
+                                </span> <br>
+                                <span class="dname">
+                                    Delivery Boy: <%= orders[i].deliveryboy %>
                                 </span> <br>
                                 <div class="products">
                                     <ul>
@@ -107,18 +113,18 @@
                 </form>
             </div>
             <div class="upgrade_products">
-                <form method="POST" action="/product/update">
+                <form method="POST" action="/product/updateall">
                     <div>
-                        <input name="pid" for="pid" id="pid" placeholder="pid" required />
+                        <input type="text" name="pid" for="pid" id="pid" placeholder="pid" required />
                     </div>
                     <div>
-                        <input name="pname" for="pname" id="pname" placeholder="pname" disabled />
+                        <input type="text" name="pname" for="pname" id="pname" placeholder="pname" required/>
                     </div>
                     <div>
-                        <input name="price" for="price" id="price" placeholder="price" disabled />
+                        <input type="number" name="price" for="price" id="price" placeholder="price" required />
                     </div>
                     <div>
-                        <input name="quantity" for="quantity" id="quantity" placeholder="quantity" disabled />
+                        <input type="number" name="quantity" for="quantity" id="quantity" placeholder="quantity" required/>
                     </div>
                     <div>
                         <button type="submit">Upgrade Product</button>

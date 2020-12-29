@@ -8,6 +8,10 @@ var OrderSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    deliveryboy:{
+        type: String,
+        default: 'none'
+    },
     product:[
         {
             pid:{

@@ -52,4 +52,78 @@
                     <% } %>
             </ul>
         </div>
+        <div class="orders">
+            <h1>ALL ORDERS</h1>
+            <ul>
+                <% for (var i = 0; i < orders.length; i++) { %>
+                    <li class="timeline-yellow">
+                        <div class="timeline-time">
+                            <span>
+                                OrderID: <%= orders[i].oid %>
+                            </span> <br>
+                            <span class="cname">
+                                Customer: <%= orders[i].username %>
+                            </span> <br>
+                            <span class="dname">
+                                Delivery Boy: <%= orders[i].deliveryboy %>
+                            </span> <br>
+                            <div class="products">
+                                <ul>
+                                    <% for (var j = 1 ; j < orders[i].product.length; j++) { %>
+                                            <li>
+                                                <div>
+                                                    <span>
+                                                        ProductID: <%=orders[i].product[j].pid %>
+                                                    </span> <br>
+                                                    <span>
+                                                        Quantity: <%=orders[i].product[j].quantity %>
+                                                    </span> <br>
+                                                </div>
+                                            </li>
+                                    <% } %>
+                                </ul>
+                            </div>
+                            <span class="status">
+                                Status: <%= orders[i].status %>
+                            </span> <br>
+                            <span class="address">
+                                Address: <%= orders[i].address %>
+                            </span> <br>
+                            <span class="zipcode">
+                                Zipcode: <%= orders[i].zipcode %>
+                            </span> <br>
+                            <span class="contact">
+                                Contact: <%= orders[i].contact %>
+                            </span> <br>
+                            <span class="order">
+                                Order Date: <%= orders[i].date%>
+                            </span> <br>
+                            <form method="POST" action="/order/update">
+                                <div>
+                                    <input type="hidden" name="oid" for="oid" id="oid" value='<%= orders[i].oid %>'>
+                                </div>
+                                <div>
+                                    <input type="hidden" name="status" for="status" id="status" value="cancelled">
+                                </div>
+                                <div>
+                                    <% if(orders[i].status == 'initiated') {%>
+                                        <button type="submit">Cancel</button>
+                                    <% } 
+                                       else if(orders[i].status == 'pickedup') { %>
+                                        <button type="button" disabled>You're Order is on the way</button>
+                                    <% }
+                                    else if(orders[i].status == 'cancelled') { %>
+                                        <button type="button" disabled>Cancelled</button> 
+                                    <% } else { %>
+                                        <button type="button" disabled>Delivered</button> 
+                                    <% } %>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+    </div>
 </body>

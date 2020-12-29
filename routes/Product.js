@@ -8,6 +8,7 @@ router.get('/mid',ProductController.getProducts)
 router.post('/show',ProductController.show)
 router.post('/store', ProductController.store)
 router.post('/update',ProductController.update)
+router.post('/updateall',ProductController.updateAll)
 router.post('/delete',ProductController.destory)
 
 module.exports = router

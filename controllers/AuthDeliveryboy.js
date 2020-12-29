@@ -51,6 +51,7 @@ const login = (req, res, next) => {
                 }
                 if(result)
                 {
+                    req.session.user = user  
                     let token = jwt.sign({name: user.name}, 'verySecretValue', {expiresIn: '1h'})
                     return res.redirect('/deliveryboy/home')                 
                 }

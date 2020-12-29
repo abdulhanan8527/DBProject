@@ -17,6 +17,9 @@
                             <span class="cname">
                                 Customer: <%= orders[i].username %>
                             </span> <br>
+                            <span class="dname">
+                                Delivery Boy: <%= orders[i].deliveryboy %>
+                            </span> <br>
                             <div class="products">
                                 <ul>
                                     <% for (var j = 1 ; j < orders[i].product.length; j++) { %>
@@ -46,9 +49,28 @@
                                 Contact: <%= orders[i].contact %>
                             </span> <br>
                             <span class="order">
-                                Order Date: <%= Date(orders[i].date) %>
+                                Order Date: <%= orders[i].date%>
                             </span> <br>
-                            <button>Pick  Up</button>
+                            <form method="POST" action="/order/updatedeliveryboy">
+                                <div>
+                                    <input type="hidden" name="oid" for="oid" id="oid" value='<%= orders[i].oid %>'>
+                                </div>
+                                <div>
+                                    <input type="hidden" name="status" for="status" id="status" value="pickedup">
+                                </div>
+                                <div>
+                                    <input type="hidden" name="deliveryboy" for="deliveryboy" id="deliveryboy" value="<%= username %>">
+                                </div>
+                                <div>
+                                    <% if(orders[i].status == 'initiated') {%>
+                                        <button type="submit">Pick  Up</button>
+                                    <% } 
+                                       else { %>
+                                        <button type="button" disabled>This Order is Picked Up Already</button>
+                                    <% } %>
+                                </div>
+                            </form>
+                            
                         </div>
                     </li>
                     <% } %>
