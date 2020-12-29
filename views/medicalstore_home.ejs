@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <title>Medical Store</title>
+    </head>
+    <body>
+        <h1>Welcome, Medical Store</h1>
+        <div class="container">
+            <div class="container__products">
+                <h1>ALL PRODUCTS</h1>
+                <ul>
+                    <% for (var i = 0; i < products.length; i++) { %>
+                        <li class="timeline-yellow">
+                            <div class="timeline-time">
+                                <span class="pname" style="text-align:left">
+                                Name: <%= products[i].pname %>
+                                </span>
+                                <br>
+                                <span class="price">
+                                Price: <%= products[i].price %> </span>
+                                <br>
+                                <span class="price">
+                                    Quantity: <%= products[i].quantity %> </span>
+                            </div>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+            <div class="orders">
+                <h1>ALL ORDERS</h1>
+                <ul>
+                    <% for (var i = 0; i < orders.length; i++) { %>
+                        <li class="timeline-yellow">
+                            <div class="timeline-time">
+                                <span>
+                                    OrderID: <%= orders[i].oid %>
+                                </span> <br>
+                                <span class="cname">
+                                    Customer: <%= orders[i].username %>
+                                </span> <br>
+                                <div class="products">
+                                    <ul>
+                                        <% for (var j = 0 ; j < orders[i].product.length; j++) { %>
+                                            <% if(orders[i].product[j].mid == User.username) { %>
+                                                <li>
+                                                    <div>
+                                                        <span>
+                                                            ProductID: <%=orders[i].product[j].pid %>
+                                                        </span> <br>
+                                                        <span>
+                                                            Quantity: <%=orders[i].product[j].quantity %>
+                                                        </span> <br>
+                                                    </div>
+                                                </li>
+                                            <% } %>
+                                        <% } %>
+                                    </ul>
+                                </div>
+                                <span class="status">
+                                    Status: <%= orders[i].status %>
+                                </span> <br>
+                                <span class="address">
+                                    Address: <%= orders[i].address %>
+                                </span> <br>
+                                <span class="zipcode">
+                                    Zipcode: <%= orders[i].zipcode %>
+                                </span> <br>
+                                <span class="contact">
+                                    Contact: <%= orders[i].contact %>
+                                </span> <br>
+                                <span class="order">
+                                    Order Date: <%= Date(orders[i].date) %>
+                                </span> <br>
+                            </div>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+        </div>
+        <div class="operations">
+            <div class="add_products">
+                <form method="POST" action="/product/store">
+                    <div>
+                        <input name="pid" for="pid" id="pid" placeholder="pid" required />
+                    </div>
+                    <div>
+                        <input name="pname" for="pname" id="pname" placeholder="pname" required />
+                    </div>
+                    <div>
+                        <input name="price" for="price" id="price" placeholder="price" required />
+                    </div>
+                    <div>
+                        <input name="quantity" for="quantity" id="quantity" placeholder="quantity" required />
+                    </div>
+                    <div>
+                        <button type="submit">Add Product</button>
+                    </div>
+                </form>
+            </div>
+            <div class="remove_products">
+                <form method="POST" action="/product/delete">
+                    <div>
+                        <input name="pid" for="pid" id="pid" placeholder="pid" required />
+                    </div>
+                    <div>
+                        <button type="submit">Remove Product</button>
+                    </div>
+                </form>
+            </div>
+            <div class="upgrade_products">
+                <form method="POST" action="/product/update">
+                    <div>
+                        <input name="pid" for="pid" id="pid" placeholder="pid" required />
+                    </div>
+                    <div>
+                        <input name="pname" for="pname" id="pname" placeholder="pname" disabled />
+                    </div>
+                    <div>
+                        <input name="price" for="price" id="price" placeholder="price" disabled />
+                    </div>
+                    <div>
+                        <input name="quantity" for="quantity" id="quantity" placeholder="quantity" disabled />
+                    </div>
+                    <div>
+                        <button type="submit">Upgrade Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

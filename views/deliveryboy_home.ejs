@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Delivery Boy</title>
+    </head>
+    <body>
+        <h5>Welcome Delivery Boy</h5>
+        <div class="orders">
+            <h1>ALL ORDERS</h1>
+            <ul>
+                <% for (var i = 0; i < orders.length; i++) { %>
+                    <li class="timeline-yellow">
+                        <div class="timeline-time">
+                            <span>
+                                OrderID: <%= orders[i].oid %>
+                            </span> <br>
+                            <span class="cname">
+                                Customer: <%= orders[i].username %>
+                            </span> <br>
+                            <div class="products">
+                                <ul>
+                                    <% for (var j = 1 ; j < orders[i].product.length; j++) { %>
+                                            <li>
+                                                <div>
+                                                    <span>
+                                                        ProductID: <%=orders[i].product[j].pid %>
+                                                    </span> <br>
+                                                    <span>
+                                                        Quantity: <%=orders[i].product[j].quantity %>
+                                                    </span> <br>
+                                                </div>
+                                            </li>
+                                    <% } %>
+                                </ul>
+                            </div>
+                            <span class="status">
+                                Status: <%= orders[i].status %>
+                            </span> <br>
+                            <span class="address">
+                                Address: <%= orders[i].address %>
+                            </span> <br>
+                            <span class="zipcode">
+                                Zipcode: <%= orders[i].zipcode %>
+                            </span> <br>
+                            <span class="contact">
+                                Contact: <%= orders[i].contact %>
+                            </span> <br>
+                            <span class="order">
+                                Order Date: <%= Date(orders[i].date) %>
+                            </span> <br>
+                            <button>Pick  Up</button>
+                        </div>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+    </div>
+    </body>
+</html>

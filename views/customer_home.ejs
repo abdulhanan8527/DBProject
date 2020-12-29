@@ -1,0 +1,55 @@
+<head>
+    <title>Customer</title>
+</head>
+<body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("[type='number']").keypress(function (evt) {
+            evt.preventDefault();
+        });
+    </script>
+    <h5><a href="/cart/user">Cart</a></h5>
+    <h1>Welcome to E-Pharmacy</h1>
+    <h2>Shop Here</h2>
+    <div class="container">
+        <div class="container__products">
+            <h1>ALL PRODUCTS</h1>
+            <ul>
+                <% for (var i = 0; i < products.length; i++) { %>
+                    <li class="timeline-yellow">
+                        <div class="timeline-time">
+                            <span class="pname" style="text-align:left">
+                            Name: <%= products[i].pname %>
+                            </span>
+                            <br>
+                            <span class="price">
+                            Price: <%= products[i].price %> </span>
+                            <br>
+                            <span class="price">
+                                Quantity: <%= products[i].quantity %> </span>
+                            <form action="/cart/update" method="POST">
+                                <div>
+                                    <input type="hidden" name="oid" id="oid" for="oid" value='<%=CartID%>'>
+                                </div>
+                                <div>
+                                    <input type="hidden" name="pid" id="pid" for="pid" value='<%=products[i].pid%>'>
+                                </div>
+                                <div>
+                                    <input type="hidden" name="mid" id="mid" for="mid" value='<%=products[i].mid%>'>
+                                </div>
+                                <div>
+                                    <input type="hidden" name="price" id="price" for="price" value='<%=products[i].price%>'>
+                                </div>
+                                <div>
+                                    <input type="number" onkeypress="return false" min="1" max="<%= products[i].quantity %>" name="quantity" id="quantity" for="quantity">
+                                </div>
+                                <div>
+                                    <button type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+</body>

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap');
+*{
+    font-family: 'Rajdhani', sans-serif;
+}
+.title{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    color: rgb(24, 23, 23);
+}
+.ask{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content:center;
+    color: rgb(27, 25, 29);
+}
+.operations{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.operations li{
+    list-style: none;
+}
+.operations li a{
+    color: rgb(27, 21, 21);
+    text-decoration: none;
+    flex-direction: view;
+}

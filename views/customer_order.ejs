@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Order</title>
+    </head>
+    <body>
+        <h5>Order</h5>
+        <div>
+            <form action="/order/store" method="POST">
+                <div>
+                    <input type="hidden" for="oid" name="oid" id="oid" value='<%=User.username+Date.now()%>'>
+                </div>
+                <div>
+                    <input type="hidden" for="username" name="username" id="username" value='<%=User.username%>'>
+                </div>
+                <div>
+                        <input type="hidden" for="product" name="product" id="product" value='<%=JSON.stringify(product)%>'>
+                </div>
+                <div>
+                    <input type="text" for="address" name="address" id="address" placeholder="Address" value='<%=User.address%>'>
+                </div>
+                <div>
+                    <input type="number" for="zipcode" name="zipcode" id="zipcode" placeholder="Zipcode">
+                </div>
+                <div>
+                    <input type="string" for="contact" name="contact" id="contact" placeholder="Contact" value='<%=User.phone%>'>
+                </div>
+                <div>
+                    <button type="submit">Order Now</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
