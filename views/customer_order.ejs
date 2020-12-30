@@ -56,7 +56,13 @@
                         <input type="string" for="contact" name="contact" id="contact" placeholder="Contact" value='<%=User.phone%>'>
                     </div>
                     <div>
+                        <% if(product.length > 1) { %>
                         <button type="submit" class="action action--button action--buy"><i class="fa fa-shopping-cart"></i><span class="action__text">Place Order</span></button>
+                        <% }
+                            else{ %>
+                                <h4>Your Cart is Empty!</h4>
+                            <% } %>
+
                     </div>
                 </form>
             </div>

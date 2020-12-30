@@ -1,24 +1,44 @@
 <div>
     <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Blueprint: A basic responsive product grid layout with comparison functionality" />
+        <meta name="keywords" content="blueprint, template, html, css, javascript, grid, layout, effect, product comparison" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/product/demo.css" />
+        <link rel="stylesheet" type="text/css" href="/css/product/component.css" />
+        <!-- Modernizr is used for flexbox fallback -->
+        <script src="/js/product/modernizr.custom.js"></script>
+
+
         <title>Welcome</title>
-        <link rel="stylesheet" type="text/css" href="/css/welcome.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="/css/component.css" />
+        <script src="/js/modernizr-custom.js"></script>
     </head>
     <div>
         <body>
-            <div>
-                <h1 class="title">E-Pharmacy</h1>
-            </div>
-            <div>
-                <h2 class="ask">Who you are?</h2>
-            </div>
-            <div>
-                <ul class="operations">
-                    <li><a href="/customer/login">Customer</a></li>
-                    <li><a href="/medicalstore/login">Medical Store</a></li>
-                    <li><a href="/deliveryboy/login">Delivery Boy</a></li>
-              
-            </div>
-            
+            <div class="view">
+                <header class="bp-header cf">
+                    <span>E-Pharmacy <span class="bp-icon bp-icon-about" data-content="Developer Team: Abdul Hanan | Shufiyan Shams | Ibrar ul Haq."></span></span>
+                    <h1>Who are you?</h1>
+                </header>
+                <section class="grid">
+                    <div class="product">
+                        <h4><a href="/customer/login">Customer</a></h4>
+                    </div>
+                    <div class="product">
+                        <h4><a href="/medicalstore/login">Medical Store</a></h4>
+                    </div>
+                    <div class="product">
+                        <h4><a href="/deliveryboy/login">Delivery Boy</a></h4>
+                    </div>
+                </section>
+            </div>            
         </body>
     </div>
     
