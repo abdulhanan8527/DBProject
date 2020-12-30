@@ -26,7 +26,7 @@ router.get('/home', async (req, res, next) =>{
     console.log("Order: ",data)
     res.render('customer_home.ejs',{products,CartID,orders: data})
 })
-router.get('/porder', async(req, res)=>{
+router.get('/porder', async (req, res)=>{
     var username = req.session.user.username
     let data = await Order.find({username,username})
     console.log("Order: ",data)

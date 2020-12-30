@@ -8,15 +8,16 @@ const { response } = require('express')
 
 router.get('/',CartController.index)
 router.get('/user',async (req, res) =>{
-    const Cart = await axios({
-        method: 'post',
+    const cart = await axios({
+        method: 'POST',
         url: 'http://localhost:3000/cart/show',
         data:{
             oid: req.session.user.username
         }
     });
-    console.log(Cart.data.data)
-    res.render('customer_cart.ejs',{product: Cart.data.data.product,username: req.session.user.username})
+    let username = req.session.user.username
+    console.log(username,cart)
+    res.render('customer_cart.ejs',{product: cart.data.data.product,username: req.session.user.username})
 })
 router.post('/removeitem', (req, res) =>{
     CartSchema.findOneAndUpdate({oid: req.body.username},

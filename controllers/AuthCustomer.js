@@ -21,21 +21,24 @@ const register = async (req, res) => {
             phone: req.body.phone,
             address: req.body.address
         })
+        
     
         customer.save()
         .then(async (user) => {   
             const Cart = await axios({
-                method: 'post',
+                method: 'POST',
                 url: 'http://localhost:3000/cart/store',
                 data:{
                     oid: req.body.username,
                     product:{
-                        pid: null,
-                        quantity: null
+                        pid: '',
+                        quantity: 0,
+                        mid: '',
+                        price: 0
                     }
                 }
             });
-            req.session.user = user     
+            req.session.user.user = user  
             return res.redirect('/customer/login')
         })
         .catch(err =>{
