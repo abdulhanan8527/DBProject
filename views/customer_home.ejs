@@ -142,7 +142,7 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/demo.css" />
 	<link rel="stylesheet" type="text/css" href="/css/component.css" />
-    <script src="/js/modernizr-custom.js"></script>
+	<script src="/js/modernizr-custom.js"></script>
 </head>
 
 <body>
@@ -188,13 +188,6 @@
 			<!-- <img class="poster" src="/images/1.jpg" alt="img01" /> -->
 			<!-- Product grid -->
 			<section class="grid">
-                <% var response = axios({
-                    url: 'http://localhost:3000/cart/show',
-                    method: 'POST',
-                    data: {
-                        oid: username
-                    }
-                }) %>
 				<!-- Products -->
 				<% for(var i = 0; i < products.length; i++) {%>
 				<div class="product">
@@ -230,6 +223,7 @@
 					
 					<label class="action action--compare-add"><input class="check-hidden" type="checkbox" /><i class="fa fa-plus"></i><i class="fa fa-check"></i><span class="action__text action__text--invisible">Add to Wishlist</span></label>
 				</div>
+				<% } %>
 			</section>
 		</div>
 	</div>

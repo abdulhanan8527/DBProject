@@ -32,16 +32,7 @@ router.get('/porder', async(req, res)=>{
     console.log("Order: ",data)
     res.render('customer_porder.ejs',{orders: data})
 })
-//call utha whatsapp pa
 
-//check kr ab
-//set hai
-// ab products show ho hena?
-//class chal rahi hai
-//db lab
-//ok
-// ok
-//sun ab products or customer ki info display karwani ha customer home pa
 router.get('/login', function(req, res, next){
     res.render('customer_login.ejs')
 })
