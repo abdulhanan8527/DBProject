@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
     <head>
         <title>Cart</title>
     </head>
@@ -28,4 +28,90 @@
             <h5><a href="/order/user">Place Order</a></h5>
         </div>
     </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Blueprint: A basic responsive product grid layout with comparison functionality" />
+        <meta name="keywords" content="blueprint, template, html, css, javascript, grid, layout, effect, product comparison" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/product/demo.css" />
+        <link rel="stylesheet" type="text/css" href="/css/product/component.css" />
+        <!-- Modernizr is used for flexbox fallback -->
+        <script src="/js/product/modernizr.custom.js"></script>
+
+
+        <title>Cart</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="/css/component.css" />
+        <script src="/js/modernizr-custom.js"></script>
+	</head>
+	<body>
+		<!-- Compare basket -->
+		<div class="compare-basket">
+			<button class="action action--button action--compare"><i class="fa fa-check"></i><span class="action__text">Wishlist</span></button>
+		</div>
+		<!-- Main view -->
+		<div class="view">
+			<!-- Blueprint header -->
+			<header class="bp-header cf">
+				<span>E-Pharmacy <span class="bp-icon bp-icon-about" data-content="Developer Team: Abdul Hanan | Shufiyan Shams | Ibrar ul Haq."></span></span>
+				<h1>Products in Cart</h1>
+				<nav>
+					<a href="/customer/home" class="bp-icon bp-icon-prev" data-info="Back"><span>Back</span></a>
+					<!--a href="" class="bp-icon bp-icon-next" data-info="next Blueprint"><span>Next Blueprint</span></a-->
+					<a href="/customer/porder" class="bp-icon bp-icon-drop" data-info="Orders History"><span>History Of Orders</span></a>
+					<a href="/order/user" class="bp-icon bp-icon-archive" data-info="Place Order"><span>Go to the Order Page</span></a>
+				</nav>
+			</header>
+			<!-- Product grid -->
+			<section class="grid">
+                <!-- Products -->
+                <% var total_price = 0 %>
+                <% for (var i = 1; i < product.length; i++) { %>
+                    <% total_price += product[i].price*product[i].quantity %>
+				<div class="product">
+					<div class="product__info">
+						<img class="product__image" src="/images/med.png" alt="Product 1" />
+						<h3 class="product__title"><%= product[i].pid %></h3>
+						<span class="product__year extra highlight">2011</span>
+						<span class="product__region extra highlight">Douro</span>
+						<span class="product__varietal  highlight">Quantity: <%=product[i].quantity%></span>
+						<span class="product__alcohol extra highlight">13%</span>
+                        <span class="product__price highlight">$ <%=product[i].price%> </span>
+                        <form action="/cart/removeitem" method="POST">
+                            <div>
+                                <input type="hidden" name="username" id="username" value="<%=username%>">
+                            </div>
+                            <div>
+                                <input type="hidden" name="pid" id="pid" value="<%=product[i].pid%>">
+                            </div>
+                            <div>
+						        <button type="submit" class="action action--button action--buy"><i class="fa fa-shopping-cart"></i><span class="action__text">Remove from cart</span></button>
+                            </div>
+                        </form>
+					</div>
+					<label class="action action--compare-add"><input class="check-hidden" type="checkbox" /><i class="fa fa-plus"></i><i class="fa fa-check"></i><span class="action__text action__text--invisible">Add to Wishlist</span></label>
+                </div>
+                <% } %>
+                
+			</section>
+        </div><!-- /view -->
+        <section class="billing">
+            <h5 class="total__price">Total Price: <%=total_price %></h5>
+        </section>
+		<!-- product compare wrapper -->
+		<section class="compare">
+			<button class="action action--close"><i class="fa fa-remove"></i><span class="action__text action__text--invisible">Close comparison overlay</span></button>
+		</section>
+		<script src="/js/product/classie.js"></script>
+		<script src="/js/product/main.js"></script>
+	</body>
 </html>

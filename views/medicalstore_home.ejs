@@ -1,136 +1,194 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
     <head>
-        <title>Medical Store</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Blueprint: A basic responsive product grid layout with comparison functionality" />
+        <meta name="keywords" content="blueprint, template, html, css, javascript, grid, layout, effect, product comparison" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/product/demo.css" />
+        <link rel="stylesheet" type="text/css" href="/css/product/component.css" />
+        <!-- Modernizr is used for flexbox fallback -->
+        <script src="/js/product/modernizr.custom.js"></script>
+
+
+        <title>Medical Store Homepage</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="/css/component.css" />
+        <script src="/js/modernizr-custom.js"></script>
     </head>
     <body>
-        <h1>Welcome, Medical Store</h1>
-        <div class="container">
-            <div class="container__products">
-                <h1>ALL PRODUCTS</h1>
-                <ul>
-                    <% for (var i = 0; i < products.length; i++) { %>
-                        <li class="timeline-yellow">
-                            <div class="timeline-time">
-                                <span>
-                                    ID: <%= products[i].pid %>
-                                </span> <br>
-                                <span class="pname" style="text-align:left">
-                                    Name: <%= products[i].pname %>
-                                </span>
-                                <br>
-                                <span class="price">
-                                    Price: <%= products[i].price %> </span>
-                                <br>
-                                <span class="price">
-                                    Quantity: <%= products[i].quantity %> </span>
-                            </div>
-                        </li>
-                        <% } %>
-                </ul>
-            </div>
-            <div class="orders">
-                <h1>ALL ORDERS</h1>
-                <ul>
-                    <% for (var i = 0; i < orders.length; i++) { %>
-                        <li class="timeline-yellow">
-                            <div class="timeline-time">
-                                <span>
-                                    OrderID: <%= orders[i].oid %>
-                                </span> <br>
-                                <span class="cname">
-                                    Customer: <%= orders[i].username %>
-                                </span> <br>
-                                <span class="dname">
-                                    Delivery Boy: <%= orders[i].deliveryboy %>
-                                </span> <br>
-                                <div class="products">
-                                    <ul>
-                                        <% for (var j = 0 ; j < orders[i].product.length; j++) { %>
-                                            <% if(orders[i].product[j].mid == User.username) { %>
-                                                <li>
-                                                    <div>
-                                                        <span>
-                                                            ProductID: <%=orders[i].product[j].pid %>
-                                                        </span> <br>
-                                                        <span>
-                                                            Quantity: <%=orders[i].product[j].quantity %>
-                                                        </span> <br>
-                                                    </div>
-                                                </li>
-                                            <% } %>
+        <div class="view">
+            <header class="bp-header cf">
+				<span>E-Pharmacy <span class="bp-icon bp-icon-about" data-content="Developer Team: Abdul Hanan | Shufiyan Shams | Ibrar ul Haq."></span></span>
+				<h1>Your Products</h1>
+				<nav>
+					<a href="/medicalstore/login" class="bp-icon bp-icon-prev" data-info="Back"><span>Back</span></a>
+					<!--a href="" class="bp-icon bp-icon-next" data-info="next Blueprint"><span>Next Blueprint</span></a-->
+					<a href="#" class="bp-icon bp-icon-drop" data-info="back to the Codrops article"><span>back to the Codrops article</span></a>
+					<a href="#" class="bp-icon bp-icon-archive" data-info="Place Order"><span>Go to the Order Page</span></a>
+				</nav>
+            </header>
+            <section class="grid">
+                <% for (var i = 0; i < products.length; i++) { %>
+                    <div class="product">
+                        <div class="product__info">
+                            <img class="product__image" src="/images/med.png" alt="Product 1" />
+                            <p class="product__price"><%= products[i].pid%></p>
+                            <h3 class="product__title"><%= products[i].pname%></h3>
+                            <span class="product__varietal  highlight">Quantity: <%=products[i].quantity%></span>
+                            <span class="product__price highlight">$ <%=products[i].price%> </span>
+                        </div>
+                    </div>
+                <% } %>
+            </section>
+        </div>
+        <div class="view">
+            <header class="bp-header cf">
+				<span>E-Pharmacy <span class="bp-icon bp-icon-about" data-content="Developer Team: Abdul Hanan | Shufiyan Shams | Ibrar ul Haq."></span></span>
+				<h1>Order Received</h1>
+				<nav>
+					<a href="/medicalstore/login" class="bp-icon bp-icon-prev" data-info="Back"><span>Back</span></a>
+				</nav>
+            </header>
+            <section class="grid">
+                <% for (var i = 0; i < orders.length; i++) { %>
+                    <div class="product">
+                        <div class="timeline-time">
+                            <span>
+                                OrderID: <%= orders[i].oid %>
+                            </span> <br>
+                            <span class="cname">
+                                Customer: <%= orders[i].username %>
+                            </span> <br>
+                            <span class="dname">
+                                Delivery Boy: <%= orders[i].deliveryboy %>
+                            </span> <br>
+                            <div class="products">
+                                <ul>
+                                    <% for (var j = 0 ; j < orders[i].product.length; j++) { %>
+                                        <% if(orders[i].product[j].mid == User.username) { %>
+                                            <li>
+                                                <div>
+                                                    <span>
+                                                        ProductID: <%=orders[i].product[j].pid %>
+                                                    </span> <br>
+                                                    <span>
+                                                        Quantity: <%=orders[i].product[j].quantity %>
+                                                    </span> <br>
+                                                </div>
+                                            </li>
                                         <% } %>
-                                    </ul>
-                                </div>
-                                <span class="status">
-                                    Status: <%= orders[i].status %>
-                                </span> <br>
-                                <span class="address">
-                                    Address: <%= orders[i].address %>
-                                </span> <br>
-                                <span class="zipcode">
-                                    Zipcode: <%= orders[i].zipcode %>
-                                </span> <br>
-                                <span class="contact">
-                                    Contact: <%= orders[i].contact %>
-                                </span> <br>
-                                <span class="order">
-                                    Order Date: <%= Date(orders[i].date) %>
-                                </span> <br>
+                                    <% } %>
+                                </ul>
                             </div>
-                        </li>
-                        <% } %>
-                </ul>
-            </div>
+                            <span class="status">
+                                Status: <%= orders[i].status %>
+                            </span> <br>
+                            <span class="address">
+                                Address: <%= orders[i].address %>
+                            </span> <br>
+                            <span class="zipcode">
+                                Zipcode: <%= orders[i].zipcode %>
+                            </span> <br>
+                            <span class="contact">
+                                Contact: <%= orders[i].contact %>
+                            </span> <br>
+                            <span class="order">
+                                Order Date: <%= Date(orders[i].date) %>
+                            </span> <br>
+                        </div>
+                    </div>
+                    <% } %>
+            </section>
         </div>
-        <div class="operations">
-            <div class="add_products">
-                <form method="POST" action="/product/store">
-                    <div>
-                        <input name="pid" for="pid" id="pid" placeholder="pid" required />
-                    </div>
-                    <div>
-                        <input name="pname" for="pname" id="pname" placeholder="pname" required />
-                    </div>
-                    <div>
-                        <input name="price" for="price" id="price" placeholder="price" required />
-                    </div>
-                    <div>
-                        <input name="quantity" for="quantity" id="quantity" placeholder="quantity" required />
-                    </div>
-                    <div>
-                        <button type="submit">Add Product</button>
-                    </div>
-                </form>
-            </div>
-            <div class="remove_products">
-                <form method="POST" action="/product/delete">
-                    <div>
-                        <input name="pid" for="pid" id="pid" placeholder="pid" required />
-                    </div>
-                    <div>
-                        <button type="submit">Remove Product</button>
-                    </div>
-                </form>
-            </div>
-            <div class="upgrade_products">
-                <form method="POST" action="/product/updateall">
-                    <div>
-                        <input type="text" name="pid" for="pid" id="pid" placeholder="pid" required />
-                    </div>
-                    <div>
-                        <input type="text" name="pname" for="pname" id="pname" placeholder="pname" required/>
-                    </div>
-                    <div>
-                        <input type="number" name="price" for="price" id="price" placeholder="price" required />
-                    </div>
-                    <div>
-                        <input type="number" name="quantity" for="quantity" id="quantity" placeholder="quantity" required/>
-                    </div>
-                    <div>
-                        <button type="submit">Upgrade Product</button>
-                    </div>
-                </form>
-            </div>
+        <div class="view">
+            <header class="bp-header cf">
+				<span>E-Pharmacy <span class="bp-icon bp-icon-about" data-content="Developer Team: Abdul Hanan | Shufiyan Shams | Ibrar ul Haq."></span></span>
+				<h1>Add New Products Here</h1>
+				<nav>
+					<a href="/medicalstore/login" class="bp-icon bp-icon-prev" data-info="Back"><span>Back</span></a>
+				</nav>
+            </header>
+            <section class="grid">
+                <div class="product">
+                    <form method="POST" action="/product/store">
+                        <div>
+                            <input name="pid" for="pid" id="pid" placeholder="pid" required />
+                        </div>
+                        <div>
+                            <input name="pname" for="pname" id="pname" placeholder="pname" required />
+                        </div>
+                        <div>
+                            <input name="price" for="price" id="price" placeholder="price" required />
+                        </div>
+                        <div>
+                            <input name="quantity" for="quantity" id="quantity" placeholder="quantity" required />
+                        </div>
+                        <div>
+                            <button class="action action--button action--buy" type="submit">Add Product</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </div>
+        <div class="view">
+            <header class="bp-header cf">
+				<span>E-Pharmacy <span class="bp-icon bp-icon-about" data-content="Developer Team: Abdul Hanan | Shufiyan Shams | Ibrar ul Haq."></span></span>
+				<h1>Delete Any Product Here</h1>
+				<nav>
+					<a href="/medicalstore/login" class="bp-icon bp-icon-prev" data-info="Back"><span>Back</span></a>
+				</nav>
+            </header>
+            <section class="grid">
+                <div class="product">
+                    <form method="POST" action="/product/delete">
+                        <div>
+                            <input name="pid" for="pid" id="pid" placeholder="pid" required />
+                        </div>
+                        <div>
+                            <button class="action action--button action--buy" type="submit">Remove Product</button>
+                        </div>
+                    </form>
+                </div>
+                
+            </section>
+        </div>
+        <div class="view">
+            <header class="bp-header cf">
+				<span>E-Pharmacy <span class="bp-icon bp-icon-about" data-content="Developer Team: Abdul Hanan | Shufiyan Shams | Ibrar ul Haq."></span></span>
+				<h1>Update Products Here</h1>
+				<nav>
+					<a href="/medicalstore/login" class="bp-icon bp-icon-prev" data-info="Back"><span>Back</span></a>
+				</nav>
+            </header>
+            <section class="grid">
+                <div class="product">
+                    <form method="POST" action="/product/updateall">
+                        <div>
+                            <input type="text" name="pid" for="pid" id="pid" placeholder="pid" required />
+                        </div>
+                        <div>
+                            <input type="text" name="pname" for="pname" id="pname" placeholder="pname" required/>
+                        </div>
+                        <div>
+                            <input type="number" name="price" for="price" id="price" placeholder="price" required />
+                        </div>
+                        <div>
+                            <input type="number" name="quantity" for="quantity" id="quantity" placeholder="quantity" required/>
+                        </div>
+                        <div>
+                            <button class="action action--button action--buy" type="submit">Upgrade Product</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <script src="/js/product/classie.js"></script>
+		<script src="/js/product/main.js"></script>
     </body>
 </html>

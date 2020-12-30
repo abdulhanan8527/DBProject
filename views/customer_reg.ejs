@@ -1,41 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Registration For Customers</title>
-    <link rel="stylesheet" type="text/css" href="/css/customer_reg.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Customer Sign Up</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Registration For Customers</h1>
-    <div class="content">
-        <form action="/customer/registration" method="POST">
-            <div class="input">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username">
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" action="/customer/registration" id="signup-form" class="signup-form">
+                        <h2 class="form-title">Create Customer Account</h2>
+                        <div class="form-group">
+                            <input required type="text" class="form-input" name="firstname" id="firstname" placeholder="First Name"/>
+                        </div>
+                        <div class="form-group">
+                            <input required type="text" class="form-input" name="lastname" id="lastname" placeholder="Last Name"/>
+                        </div>
+                        <div class="form-group">
+                            <input required type="text" class="form-input" name="username" id="username" placeholder="Username"/>
+                        </div>
+                        <div class="form-group">
+                            <input required type="email" class="form-input" name="email" id="email" placeholder="Your Email"/>
+                        </div>
+                        <div class="form-group">
+                            <input required type="text" class="form-input" name="phone" id="phone" placeholder="Phone No."/>
+                        </div>
+                        <div class="form-group">
+                            <input required type="text" class="form-input" name="address" id="address" placeholder="Address"/>
+                        </div>
+                        <div class="form-group">
+                            <input required type="text" class="form-input" name="password" id="password" placeholder="Password"/>
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input required type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        Have already an account ? <a href="/customer/login" class="loginhere-link">Login here</a>
+                    </p>
+                </div>
             </div>
-            <div class="input">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-            </div>
-            <div class="input">
-                <label for="firstname">First Name</label>
-                <input type="text" name="firstname" id="firstname">
-            </div>
-            <div class="input">
-                <label for="lastname">Last Name</label>
-                <input type="text" name="lastname" id="lastname">
-            </div>
-            <div class="input">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email">
-            </div>
-            <div class="input">
-                <label for="phone">Phone</label>
-                <input type="text" name="phone" id="phone">
-            </div>
-            <div class="input">
-                <label for="address">Address</label>
-                <input type="text" name="address" id="address">
-            </div>
-            <button type="submit">Sign Up</button>
-            <p><a href="/customer"> Customer Menu</a></p>
-        </form>
+        </section>
+
     </div>
-</body>
+
+    <!-- JS -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

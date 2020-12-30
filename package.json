@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "honey": "nodemon app.js"
+    "honey": "nodemon app.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,10 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.13",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "webpack": "^5.11.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.3.0"
   }
 }

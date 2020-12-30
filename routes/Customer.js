@@ -12,6 +12,9 @@ router.get('/registration', function(req, res, next){
 router.get('/', function(req, res, next){
     res.render('customer.ejs')
 })
+router.get('/contactus', function(req, res, next){
+    res.render('contactus.ejs')
+})
 router.get('/home', async (req, res, next) =>{
     const request = await axios.get('http://localhost:3000/product');
     console.log(request.data.data)
@@ -22,6 +25,12 @@ router.get('/home', async (req, res, next) =>{
     let data = await Order.find({username,username})
     console.log("Order: ",data)
     res.render('customer_home.ejs',{products,CartID,orders: data})
+})
+router.get('/porder', async(req, res)=>{
+    var username = req.session.user.username
+    let data = await Order.find({username,username})
+    console.log("Order: ",data)
+    res.render('customer_porder.ejs',{orders: data})
 })
 //call utha whatsapp pa
 

@@ -1,19 +1,7 @@
-<head>
-    <title>Customer</title>
-</head>
-<body>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script type="text/javascript">
-        $("[type='number']").keypress(function (evt) {
-            evt.preventDefault();
-        });
-    </script>
-    <h5><a href="/cart/user">Cart</a></h5>
-    <h1>Welcome to E-Pharmacy</h1>
-    <h2>Shop Here</h2>
+<!-- <body>    
     <div class="container">
         <div class="container__products">
-            <h1>ALL PRODUCTS</h1>
+            <h1>Medical Products</h1>
             <ul>
                 <% for (var i = 0; i < products.length; i++) { %>
                     <li class="timeline-yellow">
@@ -106,6 +94,9 @@
                                     <input type="hidden" name="status" for="status" id="status" value="cancelled">
                                 </div>
                                 <div>
+                                    <input type="hidden" for="product" name="product" id="product" value='<%=JSON.stringify(orders[i].product)%>'>
+                                </div>
+                                <div>
                                     <% if(orders[i].status == 'initiated') {%>
                                         <button type="submit">Cancel</button>
                                     <% } 
@@ -126,4 +117,120 @@
             </ul>
         </div>
     </div>
+</body> -->
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<meta name="description" content="Blueprint: A basic responsive product grid layout with comparison functionality" />
+	<meta name="keywords" content="blueprint, template, html, css, javascript, grid, layout, effect, product comparison" />
+	<meta name="author" content="Codrops" />
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/product/demo.css" />
+	<link rel="stylesheet" type="text/css" href="/css/product/component.css" />
+	<!-- Modernizr is used for flexbox fallback -->
+	<script src="/js/product/modernizr.custom.js"></script>
+
+
+	<title>Homepage</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="/css/component.css" />
+	<script src="/js/modernizr-custom.js"></script>
+</head>
+
+<body>
+	<!-- Compare basket -->
+	<div class="compare-basket">
+		<button class="action action--button action--compare"><i class="fa fa-check"></i><span class="action__text">Compare</span></button>
+	</div>
+	<!-- navigation -->
+	<!-- <nav class="pages-nav">
+		<div class="pages-nav__item"><a class="link link--page" href="#page-home">Home</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-docu">Documentation</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-manuals">Manuals</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-software">Software</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-custom">Customization &amp; Settings</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-training">Training</a></div>
+		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-buy">Where to buy</a></div>
+		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-blog">Blog &amp; News</a></div>
+		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-contact">Contact</a></div>
+		<div class="pages-nav__item pages-nav__item--social">
+			<a class="link link--social link--faded" href="#"><i class="fa fa-twitter"></i><span class="text-hidden">Twitter</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-linkedin"></i><span class="text-hidden">LinkedIn</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-facebook"></i><span class="text-hidden">Facebook</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-youtube-play"></i><span class="text-hidden">YouTube</span></a>
+		</div>
+	</nav> -->
+	<!-- /navigation-->
+	<!-- pages stack -->
+	<div>
+		<!-- page -->
+		<div class="view">
+			<!-- Blueprint header -->
+			<header class="bp-header cf">
+				<span class="bp-header__present">E-Pharmacy <span class="bp-tooltip bp-icon bp-icon--about" data-content="Developer Team: Abdul Hanan | Shufiyan Shams | Ibrar ul Haq."></span></span>
+				<h1 class="bp-header__title">Health Products</h1>
+				<p class="bp-header__desc">Abdul Hanan   -   Sufiyan Shams   -   Ibrar ul Haq</p>
+				<nav class="bp-nav">
+					<a class="bp-nav__item bp-icon bp-icon--prev" href="/customer/login" data-info="Logout"><span>Back</span></a>
+					<!--a class="bp-nav__item bp-icon bp-icon--next" href="" data-info="next Blueprint"><span>Next Blueprint</span></a-->
+					<a class="bp-nav__item bp-icon bp-icon--drop" href="/customer/porder" data-info="Order History"><span>History of Orders</span></a>
+					<a class="bp-nav__item bp-icon bp-icon--archive" href="/cart/user" data-info="Go To The Cart"><span>Go to the cart</span></a>
+				</nav>
+			</header>
+			<!-- <img class="poster" src="/images/1.jpg" alt="img01" /> -->
+			<!-- Product grid -->
+			<section class="grid">
+				<!-- Products -->
+				<% for(var i = 0; i < products.length; i++) {%>
+				<div class="product">
+					<div class="product__info">
+						<img class="product__image" src="/images/med.png" alt="Product 1" />
+						<h3 class="product__title"><%= products[i].pname %></h3>
+						<span class="product__year extra highlight">2011</span>
+						<span class="product__region extra highlight">Douro</span>
+						<span class="product__varietal extra highlight">Touriga Nacional</span>
+						<span class="product__alcohol extra highlight">13%</span>
+						<span class="product__price highlight">$<%=products[i].price%></span>
+						<form action="/cart/update" method="POST">
+							<div>
+								<input type="hidden" name="oid" id="oid" for="oid" value='<%=CartID%>'>
+							</div>
+							<div>
+								<input type="hidden" name="pid" id="pid" for="pid" value='<%=products[i].pid%>'>
+							</div>
+							<div>
+								<input type="hidden" name="mid" id="mid" for="mid" value='<%=products[i].mid%>'>
+							</div>
+							<div>
+								<input type="hidden" name="price" id="price" for="price" value='<%=products[i].price%>'>
+							</div>
+							<div>
+								<input type="number" onkeypress="return false" min="1" max="<%= products[i].quantity %>" name="quantity" id="quantity" for="quantity" required>
+							</div>
+							<div>
+								<button type="submit" class="action action--button action--buy"><i class="fa fa-shopping-cart"></i><span class="action__text">Add to cart</span></button>
+							</div>
+						</form>
+					</div>
+					
+					<label class="action action--compare-add"><input class="check-hidden" type="checkbox" /><i class="fa fa-plus"></i><i class="fa fa-check"></i><span class="action__text action__text--invisible">Add to Wishlist</span></label>
+				</div>
+				<% } %>
+			</section>
+		</div>
+	</div>
+	<!-- /pages-stack -->
+	<script src="/js/product/classie.js"></script>
+	<script src="/js/product/quantity.js"></script>
+	<script src="/js/product/main.js"></script>
 </body>
+
+</html>

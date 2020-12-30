@@ -91,11 +91,34 @@ const store = async (req, res, next) => {
     next()
 }
 //update an Order
-const update = (req, res) => {
+const update = async (req, res) => {
     let OrderID = req.body.oid
 
     let updatedData = {
         status: req.body.status
+    }
+
+    if(updatedData.status == 'cancelled'){
+        let p = JSON.parse(req.body.product)
+        for(var i=1;i<p.length;i++){
+            const product = await axios({
+                method: 'post',
+                url: 'http://localhost:3000/product/show',
+                data:{
+                    pid: p[i].pid
+                }
+            });
+            let quan = product.data.response.quantity + p[i].quantity
+            const response = await axios({
+                method: 'post',
+                url: 'http://localhost:3000/product/update',
+                data:{
+                    pid: p[i].pid, 
+                    quantity: quan
+                }
+            });
+            console.log(response.data)
+        }
     }
 
     Order.findOneAndUpdate({oid: OrderID}, {$set: updatedData})

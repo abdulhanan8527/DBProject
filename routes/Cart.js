@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 const CartController = require('../controllers/cart')
+const CartSchema = require('../schema/cart')
+const { response } = require('express')
 //const upload = require('../middleware/upload')
 
 router.get('/',CartController.index)
@@ -14,7 +16,22 @@ router.get('/user',async (req, res) =>{
         }
     });
     console.log(Cart.data.data)
-    res.render('customer_cart.ejs',{product: Cart.data.data.product})
+    res.render('customer_cart.ejs',{product: Cart.data.data.product,username: req.session.user.username})
+})
+router.post('/removeitem', (req, res) =>{
+    CartSchema.findOneAndUpdate({oid: req.body.username},
+        { $pull: { product :{pid: req.body.pid} }},
+        { multi: true })
+        .then(response=>{
+            res.json({
+                message: "Item removed successfully"
+            })
+        })
+        .catch(err => {
+            res.json({
+                error: "An Error Occured!"
+            })
+        })
 })
 router.post('/empty',CartController.emptyCart)
 router.post('/show',CartController.show)

@@ -24,7 +24,3 @@ var ProductSchema = new mongoose.Schema({
 });
 var Product = mongoose.model('Product' , ProductSchema);
 module.exports = Product;
-
-// ab asa kar
-//product add remove update k liye pages bana tu
-//views k folder mn

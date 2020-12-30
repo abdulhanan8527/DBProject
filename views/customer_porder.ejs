@@ -1,0 +1,153 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<meta name="description" content="Blueprint: A basic responsive product grid layout with comparison functionality" />
+	<meta name="keywords" content="blueprint, template, html, css, javascript, grid, layout, effect, product comparison" />
+	<meta name="author" content="Codrops" />
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/product/demo.css" />
+	<link rel="stylesheet" type="text/css" href="/css/product/component.css" />
+	<!-- Modernizr is used for flexbox fallback -->
+	<script src="/js/product/modernizr.custom.js"></script>
+
+
+	<title>Order History</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="/css/component.css" />
+	<script src="/js/modernizr-custom.js"></script>
+</head>
+
+<body>
+	<!-- Compare basket -->
+	<div class="compare-basket">
+		<button class="action action--button action--compare"><i class="fa fa-check"></i><span class="action__text">Compare</span></button>
+	</div>
+	<!-- navigation -->
+	<!-- <nav class="pages-nav">
+		<div class="pages-nav__item"><a class="link link--page" href="#page-home">Home</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-docu">Documentation</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-manuals">Manuals</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-software">Software</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-custom">Customization &amp; Settings</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-training">Training</a></div>
+		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-buy">Where to buy</a></div>
+		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-blog">Blog &amp; News</a></div>
+		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-contact">Contact</a></div>
+		<div class="pages-nav__item pages-nav__item--social">
+			<a class="link link--social link--faded" href="#"><i class="fa fa-twitter"></i><span class="text-hidden">Twitter</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-linkedin"></i><span class="text-hidden">LinkedIn</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-facebook"></i><span class="text-hidden">Facebook</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-youtube-play"></i><span class="text-hidden">YouTube</span></a>
+		</div>
+	</nav> -->
+	<!-- /navigation-->
+	<!-- pages stack -->
+	<div>
+		<!-- page -->
+		<div class="view">
+			<!-- Blueprint header -->
+			<header class="bp-header cf">
+				<span class="bp-header__present">E-Pharmacy <span class="bp-tooltip bp-icon bp-icon--about" data-content="Developer Team: Abdul Hanan | Shufiyan Shams | Ibrar ul Haq."></span></span>
+				<h1 class="bp-header__title">Order History</h1>
+				<p class="bp-header__desc">Here You Can View Your Recent Orders</p>
+				<nav class="bp-nav">
+					<a class="bp-nav__item bp-icon bp-icon--prev" href="/customer/home" data-info="Back"><span>Back</span></a>
+					<!--a class="bp-nav__item bp-icon bp-icon--next" href="" data-info="next Blueprint"><span>Next Blueprint</span></a-->
+					<a class="bp-nav__item bp-icon bp-icon--drop" href="/customer/contactus" data-info="back to the Codrops article"><span>back to the Codrops article</span></a>
+					<a class="bp-nav__item bp-icon bp-icon--archive" href="/cart/user" data-info="go to the Cart"><span>Go to the cart</span></a>
+				</nav>
+			</header>
+			<!-- <img class="poster" src="/images/1.jpg" alt="img01" /> -->
+			<!-- Product grid -->
+			<section class="grid">
+                <!-- Products -->
+                
+                <% for (var i = 0; i < orders.length; i++) { %>
+                        <div class="product">
+                            <span>
+                                OrderID: <br> <%= orders[i].oid %>
+                            </span> <br>
+                            <span class="cname">
+                                Customer: <br> <%= orders[i].username %>
+                            </span> <br>
+                            <span class="dname">
+                                Delivery Boy: <br> <%= orders[i].deliveryboy %>
+                            </span> <br>
+                            <div class="products">
+                                <ul>
+                                    <h5>Products: </h5> <br>
+                                    <% for (var j = 1 ; j < orders[i].product.length; j++) { %>
+                                            <li>
+                                                <div>
+                                                    <span>
+                                                        ProductID: <%=orders[i].product[j].pid %>
+                                                    </span> <br>
+                                                    <span>
+                                                        Quantity: <%=orders[i].product[j].quantity %>
+                                                    </span> <br>
+                                                </div>
+                                            </li>
+                                    <% } %>
+                                </ul>
+                            </div>
+                            <span class="status">
+                                Status: <br> <%= orders[i].status %>
+                            </span> <br>
+                            <span class="address">
+                                Address: <br> <%= orders[i].address %>
+                            </span> <br>
+                            <span class="zipcode">
+                                Zipcode: <br> <%= orders[i].zipcode %>
+                            </span> <br>
+                            <span class="contact">
+                                Contact: <br> <%= orders[i].contact %>
+                            </span> <br>
+                            <span class="order">
+                                Order Date: <br> <%= orders[i].date%>
+                            </span> <br>
+                            <form method="POST" action="/order/update">
+                                <div>
+                                    <input type="hidden" name="oid" for="oid" id="oid" value='<%= orders[i].oid %>'>
+                                </div>
+                                <div>
+                                    <input type="hidden" name="status" for="status" id="status" value="cancelled">
+                                </div>
+                                <div>
+                                    <input type="hidden" for="product" name="product" id="product" value='<%=JSON.stringify(orders[i].product)%>'>
+                                </div>
+                                <div>
+                                    <% if(orders[i].status == 'initiated') {%>
+                                        <button type="submit" class="action action--button action--buy"><span class="action__text">Cancel</span></button>
+                                    <% } 
+                                       else if(orders[i].status == 'pickedup') { %>
+                                        <button type="button" disabled class="action action--button action--buy"><span class="action__text">Your Order is On the Way</span></button>
+                                    <% }
+                                    else if(orders[i].status == 'cancelled') { %>
+                                        <button type="button" disabled class="action action--button action--buy"><span class="action__text">Cancelled</span></button> 
+                                    <% } else { %>
+                                        <button type="button" disabled class="action action--button action--buy"><span class="action__text">Delivered</span></button>
+                                    <% } %>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    <% } %>
+			</section>
+		</div>
+	</div>
+	<!-- /pages-stack -->
+	<script src="/js/product/classie.js"></script>
+	<script src="/js/product/quantity.js"></script>
+	<script src="/js/product/main.js"></script>
+</body>
+
+</html>

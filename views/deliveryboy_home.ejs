@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="no-js">
     <head>
-        <title>Delivery Boy</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Blueprint: A basic responsive product grid layout with comparison functionality" />
+        <meta name="keywords" content="blueprint, template, html, css, javascript, grid, layout, effect, product comparison" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/product/demo.css" />
+        <link rel="stylesheet" type="text/css" href="/css/product/component.css" />
+        <!-- Modernizr is used for flexbox fallback -->
+        <script src="/js/product/modernizr.custom.js"></script>
+
+
+        <title>Delivery Boy Homepage</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="/css/component.css" />
+        <script src="/js/modernizr-custom.js"></script>
     </head>
     <body>
-        <h5>Welcome Delivery Boy</h5>
-        <div class="orders">
-            <h1>ALL ORDERS</h1>
-            <ul>
+        <div class="view">
+            <header class="bp-header cf">
+				<span>E-Pharmacy <span class="bp-icon bp-icon-about" data-content="Developer Team: Abdul Hanan | Shufiyan Shams | Ibrar ul Haq."></span></span>
+				<h1>Delivery Boy's Orders</h1>
+				<nav>
+					<a href="/deliveryboy/login" class="bp-icon bp-icon-prev" data-info="Back"><span>Back</span></a>
+					<!--a href="" class="bp-icon bp-icon-next" data-info="next Blueprint"><span>Next Blueprint</span></a-->
+					<a href="#" class="bp-icon bp-icon-drop" data-info="back to the Codrops article"><span>back to the Codrops article</span></a>
+					<a href="#" class="bp-icon bp-icon-archive" data-info="Place Order"><span>Go to the Order Page</span></a>
+				</nav>
+            </header>
+            <section class="grid">
                 <% for (var i = 0; i < orders.length; i++) { %>
-                    <li class="timeline-yellow">
+                    <div class="product">
                         <div class="timeline-time">
                             <span>
                                 OrderID: <%= orders[i].oid %>
@@ -62,20 +88,23 @@
                                     <input type="hidden" name="deliveryboy" for="deliveryboy" id="deliveryboy" value="<%= username %>">
                                 </div>
                                 <div>
-                                    <% if(orders[i].status == 'initiated') {%>
-                                        <button type="submit">Pick  Up</button>
-                                    <% } 
+                                    <% if(orders[i].status == 'initiated') { %>
+                                        <button class="action action--button action--buy" type="submit">Pick  Up</button>
+                                    <% } else if(orders[i].status == 'cancelled') { %>
+                                        <button class="action action--button action--buy disabled" type="button" disabled>Cancelled</button>
+                                    <% }
                                        else { %>
-                                        <button type="button" disabled>This Order is Picked Up Already</button>
+                                        <button class="action action--button action--buy" type="button" disabled>Order Picked Up</button>
                                     <% } %>
                                 </div>
                             </form>
                             
                         </div>
-                    </li>
+                    </div>
                     <% } %>
-            </ul>
+            </section>
         </div>
-    </div>
+        <script src="/js/product/classie.js"></script>
+		<script src="/js/product/main.js"></script>
     </body>
 </html>
